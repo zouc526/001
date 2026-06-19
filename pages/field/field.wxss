@@ -1,0 +1,101 @@
+.field-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-bottom: 20px;
+}
+
+
+.form-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.form-container {
+  padding: 0 15px;
+}
+
+.form-item {
+  margin-bottom: 18px;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.required-mark {
+  color: #ff4d4f;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.optional-mark {
+  color: #999;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* 输入框 */
+.input-box {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 带单位的输入行（田地面积、产量范围） */
+.input-unit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unit-tag {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+/* 文本域（农场介绍） */
+.textarea-box {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  resize: none;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  width: calc(100% - 30px);
+  height: 45px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0;
+  font-size: 16px;
+}

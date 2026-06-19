@@ -1,0 +1,98 @@
+<view class="advice-container">
+  <view class="page-title">土壤营养水平建议</view>
+
+  <view class="tab-bar">
+    <view 
+      class="tab-item {{activeTab === 0 ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-index="0"
+    >
+      专家建议
+    </view>
+    <view 
+      class="tab-item {{activeTab === 1 ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-index="1"
+    >
+      AI建议
+    </view>
+  </view>
+
+  <view class="advice-content" wx:if="{{activeTab === 0}}">
+    <view class="advice-card expert-card">
+      <view class="card-title">
+        <text class="title-text">权威专家指导</text>
+        <view class="tag expert-tag">专业</view>
+      </view>
+      <view class="card-content">
+        <text class="content-text">{{expertAdvice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="advice-content" wx:if="{{activeTab === 1}}">
+    <view class="loading-area" wx:if="{{loading}}">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">AI建议加载中...</text>
+    </view>
+
+    <view wx:elif="{{hasBasicInfo}}"> 
+      <view wx:if="{{Number(perAcreYield) > 0 || Number(totalYield) > 0}}">
+        <view class="advice-card yield-card">
+          <view class="card-title">
+            <text class="title-text">AI预计产量</text>
+            <view class="tag yield-tag">数据预测</view>
+          </view>
+          <view class="card-content yield-content">
+            <view class="yield-item">
+              <text class="yield-label">作物品种：</text>
+              <text class="yield-value">{{riceVariety}}</text>
+            </view>
+            <view class="yield-item">
+              <text class="yield-label">地块面积：</text>
+              <text class="yield-value">{{fieldArea}} 亩</text>
+            </view>
+            <view class="yield-item">
+              <text class="yield-label">每亩预计产量：</text>
+              <text class="yield-value">{{perAcreYield}} 公斤</text>
+            </view>
+            <view class="yield-item">
+              <text class="yield-label">总产量预计：</text>
+              <text class="yield-value">{{totalYield}} 公斤</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="advice-card ai-card" style="margin-top: 15px;">
+          <view class="card-title">
+            <text class="title-text">智能AI种植建议</text>
+            <view class="tag ai-tag">精准</view>
+          </view>
+          <view class="card-content">
+            <view class="advice-item" wx:for="{{adviceList}}" wx:key="index">
+              <view class="item-title">{{item.title}}</view>
+              <view class="item-content">{{item.content}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="advice-card ai-card" wx:else>
+        <view class="card-title">
+          <text class="title-text">智能AI分析</text>
+          <view class="tag ai-tag">待完善</view>
+        </view>
+        <view class="card-content">
+          <text class="content-text ai-tips">
+            暂无产量数据，请先完善农田信息
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <view class="tip-area" wx:else>
+      <text class="tip-text">请先设置田地基本信息</text>
+      <button bindtap="goToFieldPage" class="go-set-btn">去设置</button>
+    </view>
+  </view>
+</view>

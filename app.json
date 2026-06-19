@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/report/report",
+    "pages/ai/ai",
+    "pages/advice/advice",
+    "pages/mine/mine",
+    "pages/field/field"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4ECDC4",
+    "navigationBarTitleText": "田力检测报告", 
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default", 
+    "enablePullDownRefresh": false 
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4ECDC4",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white", 
+    "list": [
+      {
+        "pagePath": "pages/report/report",
+        "text": "田力报告" 
+      },
+      {
+        "pagePath": "pages/ai/ai",
+        "text": "AI识图"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom" 
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取位置信息用于田间定位" 
+    }
+  }
+}

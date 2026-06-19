@@ -1,0 +1,94 @@
+<view class="mine-container">
+
+  <view class="user-card">
+    <view class="avatar-wrap">
+      <image 
+        class="avatar" 
+        src="{{userInfo.avatarUrl || '/images/avatar-default.png'}}" 
+        mode="aspectFill"
+      ></image>
+      <view class="user-text">
+        <text class="user-name">{{userInfo.nickName ? userInfo.nickName : '未登录'}}</text>
+        <text class="user-tag">普通用户</text>
+      </view>
+    </view>
+    <button class="edit-btn" wx:if="{{userInfo.nickName}}">编辑资料</button>
+  </view>
+
+
+  <button class="add-farm-btn" bindtap="gotoAddFarm">+ 添加农场信息</button>
+
+
+  <view class="farm-list" wx:if="{{farmList.length > 0}}">
+    <view class="list-title">我的农场列表 ({{farmList.length}})</view>
+    
+
+    <view class="farm-card" wx:for="{{farmList}}" wx:key="index">
+
+      <view class="card-body">
+        <view class="info-grid">
+          <view class="info-item">
+            <text class="label">地块名称：</text>
+            <text class="value">{{item.plotName || '未填写'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">地理位置：</text>
+            <text class="value">{{item.location || '未填写'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">田地面积：</text>
+            <text class="value">{{item.area || 0}}{{item.areaUnit || '亩'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">种植季：</text>
+            <text class="value">{{item.plantingSeason || '未填写'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">常年产量：</text>
+            <text class="value">{{item.yieldRange || 0}}{{item.yieldUnit || '斤/亩'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">种植作物：</text>
+            <text class="value">{{item.crop || '未填写'}}</text>
+          </view>
+        </view>
+
+        <view class="info-item intro">
+          <text class="label">农场介绍：</text>
+          <text class="value">{{item.intro || '暂无介绍'}}</text>
+        </view>
+      </view>
+
+      <view class="card-opt">
+        <button class="opt-btn edit" bindtap="gotoEditFarm" data-index="{{index}}">
+          <icon type="edit" size="16" color="#fff" class="opt-icon" />
+          编辑
+        </button>
+        <button class="opt-btn delete" bindtap="deleteFarm" data-index="{{index}}">
+          <icon type="clear" size="16" color="#fff" class="opt-icon" />
+          删除
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-group">
+    <view class="menu-title">我的服务</view>
+    <view class="menu-item">检测记录</view>
+    <view class="menu-item">我的收藏</view>
+    <view class="menu-item">AI建议库</view>
+  </view>
+
+  <view class="menu-group">
+    <view class="menu-title">系统设置</view>
+    <view class="menu-item">
+      <text>消息通知</text>
+      <switch checked="{{notifySwitch}}" bindchange="switchNotify" />
+    </view>
+    <view class="menu-item">意见反馈</view>
+    <view class="menu-item">关于我们</view>
+  </view>
+  
+  <button class="logout-btn" bindtap="logout" wx:if="{{userInfo.nickName}}">退出登录</button>
+  <button class="login-btn" bindtap="login" wx:else>微信快捷登录</button>
+</view>

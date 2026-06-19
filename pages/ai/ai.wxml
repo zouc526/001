@@ -1,0 +1,67 @@
+<view class="container">
+
+
+  <view class="module-card">
+    <view class="module-header">
+      <text class="module-title">图片识别</text>
+      <text class="module-subtitle">土壤/作物状态一键识别</text>
+    </view>
+    
+    <view class="type-select">
+      <button bindtap="setRecognizeType" data-type="soil" class="{{selectType === 'soil' ? 'selected-type' : 'normal-type'}}">
+        土壤识别
+      </button>
+      <button bindtap="setRecognizeType" data-type="crop" class="{{selectType === 'crop' ? 'selected-type' : 'normal-type'}}">
+        作物识别
+      </button>
+    </view>
+    
+    <view class="image-upload">
+      <button bindtap="chooseImage" class="upload-btn">
+        <image src="/images/upload-green.png" class="upload-icon"></image>
+        选择图片/拍照
+      </button>
+      
+      <view class="image-preview" wx:if="{{imagePath}}">
+        <image src="{{imagePath}}" mode="widthFix" class="preview-image"></image>
+        <button bindtap="clearImage" class="clear-btn">×</button>
+      </view>
+      
+
+      <button bindtap="submitImageRecognition" class="submit-recognize-btn" wx:if="{{imagePath}}">
+        提交识别
+      </button>
+    </view>
+    
+
+    <view class="result-card" wx:if="{{recognitionResult}}">
+      <text class="result-title">识别结果</text>
+      <text class="result-content">{{recognitionResult}}</text>
+    </view>
+  </view>
+
+  <view class="module-card">
+    <view class="module-header">
+      <text class="module-title">智能问答</text>
+      <text class="module-subtitle">水稻种植问题随时问</text>
+    </view>
+    
+    <view class="qa-area">
+      <input 
+        placeholder="输入你的问题（比如“水稻叶子发黄怎么办？”）" 
+        bindinput="inputQuestion" 
+        class="question-input"
+        value="{{question}}"
+        placeholder-class="input-placeholder"
+      />
+      <button bindtap="submitQuestion" class="submit-btn">
+        提问AI
+      </button>
+    </view>
+
+    <view class="result-card" wx:if="{{answer}}">
+      <text class="result-title">AI回答</text>
+      <text class="result-content">{{answer}}</text>
+    </view>
+  </view>
+</view>

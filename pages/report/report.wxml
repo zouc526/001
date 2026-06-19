@@ -1,0 +1,134 @@
+<view class="container">
+  <view class="top-date">{{currentDate}}</view>
+  
+  <view class="card">
+    <view class="title">
+      <text>土壤营养水平</text>
+    </view>
+    <view class="more-btn" bindtap="goToAdvice" data-type="nutrition">+</view>
+    
+    <view class="nutrient-item">
+      <view class="nutrient-row">
+        <text class="nutrient-name">全氮</text>
+        <view class="nutrient-bar-wrapper">
+          <view class="bar-container">
+            <view class="bar-fill critical" style="width: 82%;">
+              <text class="bar-label">较高</text>
+            </view>
+          </view>
+        </view>
+        <text class="nutrient-value">1.64 g/kg</text>
+      </view>
+      <text class="nutrient-desc">
+        土壤氮素丰富，过量施氮无效，还可能导致贪青晚熟、病虫害加重及面源污染风险上升。建议减量施肥，侧重调控，强化水分管理。
+      </text>
+    </view>
+    
+    <view class="nutrient-item">
+      <view class="nutrient-row">
+        <text class="nutrient-name">有效磷</text>
+        <view class="nutrient-bar-wrapper">
+          <view class="bar-container">
+            <view class="bar-fill critical" style="width: 35%;">
+              <text class="bar-label">临界区</text>
+            </view>
+          </view>
+        </view>
+        <text class="nutrient-value">13.67 mg/kg</text>
+      </view>
+      <text class="nutrient-desc">
+        土壤磷素基本满足水稻生长，属理想范围。建议维持性施肥，注重养分平衡。
+      </text>
+    </view>
+    
+    <view class="nutrient-item">
+      <view class="nutrient-row">
+        <text class="nutrient-name">速效钾</text>
+        <view class="nutrient-bar-wrapper">
+          <view class="bar-container">
+            <view class="bar-fill optimal" style="width: 95%;">
+              <text class="bar-label">高</text>
+            </view>
+          </view>
+        </view>
+        <text class="nutrient-value">238.19 mg/kg</text>
+      </view>
+      <text class="nutrient-desc">
+        土壤速效钾丰富甚至过量，继续施用钾肥可能导致养分失衡、资源浪费及环境风险累积。建议原则上不施用化学钾肥。
+      </text>
+    </view>
+  </view>
+  
+  <view class="card">
+    <view class="title">
+      <text>土壤pH值</text>
+    </view>
+    <view class="more-btn" bindtap="goToAdvice" data-type="ph">+</view>
+    <view class="ph-container">
+      <view class="ph-bar">
+        <view class="ph-mark" style="left: 53%;">7.19</view>
+      </view>
+      <text class="ph-level">2级 - 较适宜区</text>
+    </view>
+    <view style="margin-top: 10px; font-size: 12px; color: #666; line-height: 1.5;">
+      针对 pH 5.5-6.0（弱酸性）稻田：有机 - 矿物复合配施，提升有机质稳定性；施用有机无机炭基肥，同步增碳与调酸；紫云英 - 秸秆联合还田，优化碳氮比促腐解。针对 pH 7.0-7.5（弱碱性）稻田：生物炭配施深翻，强化有机质深层积累；秸秆覆盖还田 + 腐熟剂，减少有机质地表损耗；泥炭 - 秸秆 - 生物有机肥配施，优化有机质组分。
+    </view>
+  </view>
+  
+  <view class="card">
+    <view class="title">
+      <text>土壤有机质</text>
+    </view>
+    <view class="more-btn" bindtap="goToAdvice" data-type="organic">+</view>
+    <view class="organic-content">
+      <view class="organic-info">
+        <text class="organic-label">有机质</text>
+        <text class="organic-value">29.86 g/kg</text>
+      </view>
+      <text class="organic-level medium">
+        等级：中等
+      </text>
+    </view>
+    <view style="margin-top: 10px; font-size: 12px; color: #666; line-height: 1.5;">
+      {{soilData.organicMatterLevel.recommendation}}
+    </view>
+  </view>
+
+  <view class="ai-yield-section">
+    <view class="section-title">AI预计产量</view>
+    
+    <view class="yield-content" wx:if="{{hasFarmInfo}}">
+      <view class="farm-basic">
+        <view class="basic-item">
+          <text class="label">地块名称：</text>
+          <text class="value">{{currentFarm.plotName}}</text>
+        </view>
+        <view class="basic-item">
+          <text class="label">种植作物：</text>
+          <text class="value">{{currentFarm.crop}}</text>
+        </view>
+        <view class="basic-item">
+          <text class="label">田地面积：</text>
+          <text class="value">{{currentFarm.area}} {{currentFarm.areaUnit}}</text>
+        </view>
+      </view>
+      <view class="yield-result">
+        <text class="result-label">AI预计总产量：</text>
+        <text class="result-value">{{aiYield}} 斤</text>
+      </view>
+    </view>
+
+    <view class="no-farm-info" wx:else>
+      <text class="tips-text">请先添加田地基本信息</text>
+      <button class="add-btn" bindtap="gotoAddFarm">去添加</button>
+    </view>
+  </view>
+  
+  <view class="ai-card">
+    <view class="ai-title">AI种植建议</view>
+    <view class="ai-recommend">AI推荐</view>
+    <view class="ai-content">
+      {{aiAdvice || "请先添加田地基本信息，获取个性化种植建议"}}
+    </view>
+  </view>
+</view>

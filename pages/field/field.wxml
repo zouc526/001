@@ -1,0 +1,114 @@
+<view class="field-page">
+
+
+  <view class="form-title">添加农场信息</view>
+
+  <view class="form-container">
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">地块名称</text>
+        <text class="required-mark">*</text>
+      </view>
+      <input 
+        class="input-box"
+        data-key="farmName"
+        bindinput="onInputChange"
+        placeholder="如村东头大田"
+        value="{{formData.farmName}}"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">种植作物</text>
+        <text class="required-mark">*</text>
+      </view>
+      <input 
+        class="input-box"
+        data-key="cropType"
+        bindinput="onInputChange"
+        placeholder="如水稻、小麦"
+        value="{{formData.cropType}}"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">地理位置</text>
+        <text class="required-mark">*</text>
+      </view>
+      <input 
+        class="input-box"
+        data-key="location"
+        bindinput="onInputChange"
+        placeholder="省/市/区/乡镇/村"
+        value="{{formData.location}}"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">田地面积</text>
+      </view>
+      <view class="input-unit-row">
+        <input 
+          class="input-box"
+          data-key="fieldArea"
+          bindinput="onInputChange"
+          placeholder="请输入面积"
+          type="digit"
+          value="{{formData.fieldArea}}"
+        />
+        <view class="unit-tag">亩</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">种植年份/季节</text>
+        <text class="required-mark">*</text>
+      </view>
+      <input 
+        class="input-box"
+        data-key="plantYearSeason"
+        bindinput="onInputChange"
+        placeholder="如2024年早稻"
+        value="{{formData.plantYearSeason}}"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">常年产量范围</text>
+      </view>
+      <view class="input-unit-row">
+        <input 
+          class="input-box"
+          data-key="yieldRange"
+          bindinput="onInputChange"
+          placeholder="如800-1000"
+          value="{{formData.yieldRange}}"
+        />
+        <view class="unit-tag">斤/亩</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="label-text">农场介绍</text>
+        <text class="optional-mark">（选填）</text>
+      </view>
+      <textarea 
+        class="textarea-box"
+        data-key="farmIntro"
+        bindinput="onInputChange"
+        placeholder="请输入农场介绍"
+        value="{{formData.farmIntro}}"
+      ></textarea>
+    </view>
+  </view>
+
+  <view class="submit-btn" bindtap="submitForm">
+    <text class="btn-text">提交</text>
+  </view>
+</view>
